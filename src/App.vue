@@ -1,26 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <FirstComponent v-bind:props="props"/>
+    <!-- v-bind para transmitir uma variável pela tag, sem o vbind vc estará transmitindo uma string -->
+    <!-- entender dados -->
+    <LifeCycleHook/>
+    <InfoA/>
+    <Forms/>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import FirstComponent from "./components/FirstComponent.vue";//importar o objeto em si
+  import LifeCycleHook from "./components/LifeCycleHook.vue";
+  import InfoA from "./components/Info.vue";
+  import Forms from './components/Form.vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  export default{
+    name:'App',
+    components:{//quais componenstes estarão na página
+      FirstComponent,
+      LifeCycleHook,
+      InfoA,
+      Forms
+    },
+    data(){
+      return{
+        props:'objeto do props'
+        // capacidade de transmitir uma variável pai para uma filho
+      }
+    }
   }
-}
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style >/* global, altera todas as páginas independente da classe hierarquica*/
+  div {
+    background-color: #333;
+    color: #FFF;
+  }
 </style>
